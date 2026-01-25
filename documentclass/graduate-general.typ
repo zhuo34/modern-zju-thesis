@@ -57,7 +57,7 @@
     paper: "a4",
     margin: (
       x: 2.5cm,
-      bottom: 2.54cm + 12pt + 30pt,
+      bottom: 2.54cm + 12pt + 1.5em,
       top: 2.54cm + 12pt + 4mm,
     ),
   )
@@ -67,7 +67,7 @@
   // Header and footer
   set page(
     header-ascent: 4mm,
-    footer-descent: 35pt,
+    footer-descent: 1.5em,
     header: header(
       left: [浙江大学#(degree)学位论文],
       right: context {
@@ -94,7 +94,7 @@
   show heading.where(level: 1): set text(size: 字号.小三)
   show heading.where(level: 1): x => {
     twoside-pagebreak
-    v(12pt)
+    v(12pt + 4mm)
     x
     v(6pt)
   }
