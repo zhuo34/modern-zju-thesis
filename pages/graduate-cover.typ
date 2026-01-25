@@ -57,7 +57,7 @@
 
     v(20pt)
     block(
-      width: 80%,
+      width: 100%,
       [
         #set text(size: 字号.小二, weight: "bold")
         #grid(
@@ -72,7 +72,7 @@
       v(20pt)
     }
     block(
-      width: 80%,
+      width: 100%,
       [
         #set text(size: 字号.小二, weight: "bold")
         #grid(
