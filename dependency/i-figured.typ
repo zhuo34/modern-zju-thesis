@@ -24,11 +24,14 @@
 
 #let reset-counters(it, level: 1, extra-kinds: (), equations: true, return-orig-heading: true) = {
   if it.level <= level {
-    for kind in (image, table, raw) + extra-kinds {
+    for kind in (image, table, raw) {
       counter(figure.where(kind: _prefix + repr(kind))).update(0)
     }
     if equations {
       counter(math.equation).update(0)
+    }
+    for kind in extra-kinds {
+      counter(figure.where(kind: kind)).update(0)
     }
   }
   if return-orig-heading {

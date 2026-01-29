@@ -18,6 +18,8 @@
 #import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
+#import "../dependency/lovelace.typ": pseudocode, pseudocode-list, no-number, with-line-label, indent, line-label
+
 
 #let show-outline(s) = {
   show outline.entry.where(level: 1): set text(weight: "bold")
@@ -88,7 +90,7 @@
 
 
   // Headings
-  show heading: i-figured.reset-counters
+  show heading: it => i-figured.reset-counters(it, extra-kinds: ("algorithm",))
 
   set heading(numbering: "1.1")
   show heading.where(level: 1): set text(size: 字号.小三)
@@ -106,7 +108,7 @@
 
   // Reference
   show: show-set-supplement
-  show figure: i-figured.show-figure
+  show figure: it => i-figured.show-figure(it, extra-prefixes: (algorithm: "alg:"))
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
 
