@@ -108,29 +108,14 @@
 }
 
 #let identify-algorithm = context {
-  let level = 1
-  let zero-fill = true
-  let leading-zero = true
-  let numbers = counter(heading).at(here())
-  // if zero-fill is true add trailing zeros until the level is reached
-  while zero-fill and numbers.len() < level { numbers.push(0) }
-  // only take the first `level` numbers
-  if numbers.len() > level { numbers = numbers.slice(0, level) }
-  // strip a leading zero if requested
-  if not leading-zero and numbers.at(0, default: none) == 0 {
-    numbers = numbers.slice(1)
+  let algos = query(figure.where(kind: "i-figured-algorithm").before(here()))
+  if algos.len() == 0 {
+    algos = query(figure.where(kind: "algorithm").before(here()))
   }
-
-  let algos = query(figure.where(kind: "algorithm").before(here()))
-  let algo = algos.last()
-  algo.supplement + numbering("1.1", ..numbers, algo.counter.get().at(0))
-
-  // let algos = query(figure.where(kind: "algorithm").before(here()))
-  // if algos.len() > 0 {
-  //   let algo = algos.last()
-
-  //   [#algo.supplement #algo.counter.display(algo.numbering)]
-  // }
+  if algos.len() > 0 {
+    let algo = algos.last()
+    [#algo.supplement #algo.counter.display(algo.numbering)]
+  }
 }
 
 #let pseudocode(
