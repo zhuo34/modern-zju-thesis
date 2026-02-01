@@ -90,6 +90,7 @@
       context {
         box({
           set align(left)
+          set text(weight: "bold")
           [#box([#it.supplement~#((pd.numbering)(..it.counter.get()))])#it.separator#it.body]
         })
       }
