@@ -84,7 +84,7 @@
 
   // Paragraph and text
   set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true, costs: (widow: 0%, orphan: 0%))
   show: show-cn-fontstyle
   set underline(offset: 0.2em)
 
@@ -111,6 +111,9 @@
   show figure: it => i-figured.show-figure(it, extra-prefixes: (algorithm: "alg:"))
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
+  show figure: set figure(gap: 1.2em)
+  show figure: set block(above: 2.5em, below: 2.5em)
+  show figure.where(placement: top): set place(clearance: 2.5em)
 
   show: show-flex-caption
 
