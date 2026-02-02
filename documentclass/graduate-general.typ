@@ -18,7 +18,7 @@
 #import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
-#import "../dependency/lovelace.typ": pseudocode, pseudocode-list, no-number, with-line-label, indent, line-label
+#import "../dependency/lovelace.typ": indent, line-label, no-number, pseudocode, pseudocode-list, with-line-label
 
 
 #let show-outline(s) = {
@@ -75,7 +75,12 @@
       right: context {
         let chapter-heading = near-chapter()
         if chapter-heading != none and chapter-heading.body != none {
-          chapter-heading.body
+          let number = counter(heading).at(chapter-heading.location())
+          if chapter-heading.numbering != none {
+            numbering(chapter-heading.numbering, ..number) + h(0.5em) + chapter-heading.body
+          } else {
+            chapter-heading.body
+          }
         }
       },
     ),
